@@ -26,5 +26,15 @@ struct PresentationLoadingView<Router: RouterHost, RequestItem: Sendable>: View 
 
   var body: some View {
     BaseLoadingView(with: viewModel.router, viewModel: viewModel)
+      .onReceive(
+        NotificationCenter.default.publisher(
+          for: NSNotification.IProov
+        )
+      ) { data in
+        guard let payload = data.userInfo else {
+          return
+        }
+        viewModel.handleIProovNotification(with: payload)
+      }
   }
 }

@@ -75,6 +75,12 @@ final class TestDeepLinkController: EudiTest {
     // Then
     XCTAssertNil(action)
   }
+
+  func testHasDeepLink_WhenUrlIsIProovCallback_ThenReturnIProovAction() {
+    let action = controller.hasDeepLink(url: Self.mockedIProovUrl)
+
+    XCTAssertEqual(action, Self.mockedIProovDeepLinkAction)
+  }
   
   func testHandleDeepLinkAction_WhenRouterReturnsPreAuthorizationFlow_ThenValidateCachingOfDeepLink() async {
     // Given
@@ -304,6 +310,14 @@ private extension TestDeepLinkController {
   )
   
   static let mockedExternalUrl: URL = URL(string: "https://commission.europa.eu")!
+
+  static let mockedIProovUrl: URL = URL(string: "eudi-wallet://iproov?session=session-123&passed=true")!
+
+  static let mockedIProovDeepLinkAction = DeepLink.Executable(
+    link: URLComponents(url: mockedIProovUrl, resolvingAgainstBaseURL: true)!,
+    plainUrl: mockedIProovUrl,
+    action: .iproov
+  )
   
   static let mockedExternalDeepLinkAction = DeepLink.Executable(
     link: URLComponents(url: mockedExternalUrl, resolvingAgainstBaseURL: true)!,

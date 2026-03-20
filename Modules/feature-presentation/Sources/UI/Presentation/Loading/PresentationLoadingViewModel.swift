@@ -19,12 +19,15 @@ import logic_core
 final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendable>: BaseLoadingViewModel<Router, RequestItem> {
 
   private let interactor: PresentationInteractor
+  private let iproovGate: IProovPresentationGate
   private var publisherTask: Task<Void, Error>?
   private var coordinator: RemoteSessionCoordinator?
+  private var waitingForIProovCallback = false
 
   init(
     router: Router,
     interactor: PresentationInteractor,
+    iproovGate: IProovPresentationGate = IProovPresentationGate(),
     relyingParty: String,
     relyingPartyIsTrusted: Bool,
     originator: AppRoute,
@@ -32,6 +35,7 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
   ) {
 
     self.interactor = interactor
+    self.iproovGate = iproovGate
 
     super.init(
       router: router,
@@ -129,12 +133,40 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
 
     await getCoordinator()
 
-    let result = await interactor.onSendResponse()
+    if waitingForIProovCallback {
+      return
+    }
 
-    switch result {
-    case .sent: break
+    switch await iproovGate.prepareForPresentation() {
+    case .disabled, .passed:
+      await sendPresentationResponse()
+    case .launch(let url):
+      waitingForIProovCallback = true
+      await url.open()
     case .failure(let error):
       self.onError(with: error)
+    }
+  }
+
+  func handleIProovNotification(with payload: [AnyHashable: Any]) {
+    guard
+      let rawUri = payload["uri"] as? String,
+      let url = URL(string: rawUri)
+    else {
+      return
+    }
+
+    Task { @MainActor in
+      switch await iproovGate.resolveCallback(url: url) {
+      case .ignored:
+        return
+      case .passed:
+        waitingForIProovCallback = false
+        await sendPresentationResponse()
+      case .failure(let error):
+        waitingForIProovCallback = false
+        onError(with: error)
+      }
     }
   }
 
@@ -153,6 +185,18 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
       self.coordinator = remoteSessionCoordinator
     case .failure:
       self.coordinator = nil
+    }
+  }
+
+  @MainActor
+  private func sendPresentationResponse() async {
+    let result = await interactor.onSendResponse()
+
+    switch result {
+    case .sent:
+      break
+    case .failure(let error):
+      self.onError(with: error)
     }
   }
 }

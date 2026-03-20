@@ -57,7 +57,7 @@ final class DeepLinkControllerImpl: DeepLinkController {
   public func hasDeepLink(url: URL) -> DeepLink.Executable? {
     if let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
        let scheme = components.scheme,
-       let action = DeepLink.Action.parseType(with: scheme, and: urlSchemaController) {
+       let action = DeepLink.Action.parseType(with: scheme, host: components.host, and: urlSchemaController) {
       return DeepLink.Executable(link: components, plainUrl: url, action: action)
     }
     return nil
@@ -128,6 +128,12 @@ final class DeepLinkControllerImpl: DeepLinkController {
           userInfo: ["session": remoteSessionCoordinator]
         )
       }
+    case .iproov:
+      NotificationCenter.default.post(
+        name: NSNotification.IProov,
+        object: nil,
+        userInfo: ["uri": deepLinkExecutable.plainUrl.absoluteString]
+      )
     case .external:
       deepLinkExecutable.plainUrl.open()
     case .credential_offer, .haip_vci:
@@ -200,6 +206,7 @@ public extension DeepLink {
     case credential_offer
     case haip_vci
     case haip_vp
+    case iproov
     case rqes
     case external
 
@@ -215,9 +222,12 @@ public extension DeepLink {
 
     static func parseType(
       with scheme: String,
+      host: String?,
       and urlSchemaController: UrlSchemaController
     ) -> Action? {
       switch scheme {
+      case "eudi-wallet" where host == "iproov":
+        return .iproov
       case _ where openid4vp.getSchemas(with: urlSchemaController).contains(scheme),
         _ where haip_vp.getSchemas(with: urlSchemaController).contains(scheme):
         return .openid4vp
@@ -236,4 +246,5 @@ public extension DeepLink {
 public extension NSNotification {
   static let PresentationVC = Notification.Name.init("PresentationVC")
   static let CredentialOffer = Notification.Name.init("CredentialOffer")
+  static let IProov = Notification.Name.init("IProov")
 }
