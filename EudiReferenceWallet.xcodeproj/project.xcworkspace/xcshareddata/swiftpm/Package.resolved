@@ -1,5 +1,5 @@
 {
-  "originHash" : "8b72c1132ee95a9117e1dcd1ff3c6c3fd109fccd7fbdaa78555c47dbd0a566c5",
+  "originHash" : "4163c726930418893709c92fd86db14561e1e162581e19fd458a557eeb5b2166",
   "pins" : [
     {
       "identity" : "activityindicatorview",
@@ -206,6 +206,15 @@
       "state" : {
         "revision" : "9006d2888025fbe893c3c396327b2fe45a8c177b",
         "version" : "6.1.0"
+      }
+    },
+    {
+      "identity" : "ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iProov/ios-spm.git",
+      "state" : {
+        "revision" : "de111e7d55dbc76282f78387452116d15d2153a2",
+        "version" : "13.1.1"
       }
     },
     {
