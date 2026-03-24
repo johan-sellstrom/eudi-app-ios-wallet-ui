@@ -35,7 +35,7 @@
 	<key>IProov Enabled</key>
 	<true/>
 	<key>IProov Issuer Base URL</key>
-	<string>http://localhost:3001</string>
+	<string>https://issuer.ipid.me</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 </dict>

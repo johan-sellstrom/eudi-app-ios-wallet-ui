@@ -22,12 +22,12 @@ final class TestIProovPresentationGate: XCTestCase {
     let configuration = resolveIProovConfiguration(
       infoDictionary: [
         "IProov Enabled": true,
-        "IProov Issuer Base URL": "http://localhost:3001"
+        "IProov Issuer Base URL": "https://issuer.ipid.me"
       ]
     )
 
     XCTAssertEqual(configuration.enabled, true)
-    XCTAssertEqual(configuration.issuerBaseURL?.absoluteString, "http://localhost:3001")
+    XCTAssertEqual(configuration.issuerBaseURL?.absoluteString, "https://issuer.ipid.me")
     XCTAssertEqual(configuration.callbackURL?.absoluteString, "eudi-wallet://iproov")
   }
 
