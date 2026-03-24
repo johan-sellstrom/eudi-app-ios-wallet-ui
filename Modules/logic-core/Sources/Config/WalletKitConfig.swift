@@ -23,12 +23,13 @@ private let workshopVerifierClientId = "verifier.ipid.me"
 private let workshopVerifierApiUri = "https://verifier.ipid.me"
 private let workshopVerifierLegalName = "iProov Verifier"
 private let workshopVerifierReaderRootBase64Der =
-  "MIIBiTCCAS+gAwIBAgIJALfDjrCHHyrzMAoGCCqGSM49BAMCMBsxGTAXBgNVBAMMEHZlcmlmaWVyLmlwaWQubWUwHhcN" +
-  "MjYwMzI0MTU1MTA5WhcNMjcwMzI0MTU1MTA5WjAbMRkwFwYDVQQDDBB2ZXJpZmllci5pcGlkLm1lMFkwEwYHKoZIzj0C" +
-  "AQYIKoZIzj0DAQcDQgAEGkifnqM6tBy1fatupTzINe6ywgILDjCtn0vqO7ICDkt5BI2Vh6r27nU9Wr0dHpF/pjRmIaRqW" +
-  "dHJxph1+EeXTaNcMFowGwYDVR0RBBQwEoIQdmVyaWZpZXIuaXBpZC5tZTAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEA" +
-  "wIHgDAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwCgYIKoZIzj0EAwIDSAAwRQIgRrTaJGTk3PxICzOZ86As5" +
-  "Qrf0YVmsE1SYNNLeKyiDwgCIQDiA2P4lFAsk/ESY3rdKeiu8ePD8IluphPIYF3Fg9vOAw=="
+  "MIIBpTCCAUugAwIBAgIJAM3BspOXl2JfMAoGCCqGSM49BAMCMCQxIjAgBgNVBAMMGUxlYXJuaW5nTGFiIFdvcmtzaG9w" +
+  "IFJvb3QwHhcNMjYwMzI0MTcwNDUxWhcNMjcwMzI0MTcwNDUxWjAkMSIwIAYDVQQDDBlMZWFybmluZ0xhYiBXb3Jrc2hv" +
+  "cCBSb290MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEn4cWtI+oWy+6i+I2/QUHidB4WERqsE0rgD2SmvS38gQEFlpT" +
+  "lwzXfAVXoLXDhSHscT8ONy2dzzxnG9nBM8mDSaNmMGQwEgYDVR0TAQH/BAgwBgEB/wIBADAOBgNVHQ8BAf8EBAMCAQYw" +
+  "HQYDVR0OBBYEFGYnLAiMddvDwtrYb3vkAfGaosfPMB8GA1UdIwQYMBaAFGYnLAiMddvDwtrYb3vkAfGaosfPMAoGCCqG" +
+  "SM49BAMCA0gAMEUCIEjWdatEB+pGXIfhS8bYj2gw1ltXUCXgZKUghU7CTJQxAiEAwE3f4uoTnRpNUwIO4BVzmnpg8+aeA" +
+  "MrJEKtaDrbUzoM="
 
 protocol WalletKitConfig: Sendable {
 
