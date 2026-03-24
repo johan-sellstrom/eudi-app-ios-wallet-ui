@@ -18,6 +18,7 @@ import feature_common
 
 struct PresentationLoadingView<Router: RouterHost, RequestItem: Sendable>: View {
 
+  @Environment(\.scenePhase) private var scenePhase
   @State private var viewModel: PresentationLoadingViewModel<Router, RequestItem>
 
   init(with viewModel: PresentationLoadingViewModel<Router, RequestItem>) {
@@ -35,6 +36,15 @@ struct PresentationLoadingView<Router: RouterHost, RequestItem: Sendable>: View 
           return
         }
         viewModel.handleIProovNotification(with: payload)
+      }
+      .onAppear {
+        viewModel.processPendingIProovCallbackIfNeeded()
+      }
+      .onChange(of: scenePhase) { _, newPhase in
+        guard newPhase == .active else {
+          return
+        }
+        viewModel.processPendingIProovCallbackIfNeeded()
       }
   }
 }

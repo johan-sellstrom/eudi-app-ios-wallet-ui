@@ -134,6 +134,7 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
     await getCoordinator()
 
     if waitingForIProovCallback {
+      await consumePendingIProovCallbackIfNeeded()
       return
     }
 
@@ -157,16 +158,14 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
     }
 
     Task { @MainActor in
-      switch await iproovGate.resolveCallback(url: url) {
-      case .ignored:
-        return
-      case .passed:
-        waitingForIProovCallback = false
-        await sendPresentationResponse()
-      case .failure(let error):
-        waitingForIProovCallback = false
-        onError(with: error)
-      }
+      print("[LearningLab] received iProov callback notification \(url.absoluteString)")
+      await resolveIProovCallback(url: url, source: "notification")
+    }
+  }
+
+  func processPendingIProovCallbackIfNeeded() {
+    Task { @MainActor in
+      await consumePendingIProovCallbackIfNeeded()
     }
   }
 
@@ -190,13 +189,48 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
 
   @MainActor
   private func sendPresentationResponse() async {
+    print("[LearningLab] sending presentation response to verifier")
     let result = await interactor.onSendResponse()
 
     switch result {
     case .sent:
-      break
+      print("[LearningLab] presentation response sent")
     case .failure(let error):
+      print("[LearningLab] presentation response failed: \(error.localizedDescription)")
       self.onError(with: error)
+    }
+  }
+
+  @MainActor
+  private func consumePendingIProovCallbackIfNeeded() async {
+    guard waitingForIProovCallback else {
+      return
+    }
+
+    guard let url = await IProovCallbackInbox.shared.take() else {
+      return
+    }
+
+    print("[LearningLab] consuming stored iProov callback \(url.absoluteString)")
+    await resolveIProovCallback(url: url, source: "inbox")
+  }
+
+  @MainActor
+  private func resolveIProovCallback(url: URL, source: String) async {
+    await IProovCallbackInbox.shared.clear()
+
+    switch await iproovGate.resolveCallback(url: url) {
+    case .ignored:
+      print("[LearningLab] ignored iProov callback from \(source)")
+      return
+    case .passed:
+      print("[LearningLab] iProov callback passed from \(source)")
+      waitingForIProovCallback = false
+      await sendPresentationResponse()
+    case .failure(let error):
+      print("[LearningLab] iProov callback failed from \(source): \(error.localizedDescription)")
+      waitingForIProovCallback = false
+      onError(with: error)
     }
   }
 }

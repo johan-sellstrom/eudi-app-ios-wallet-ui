@@ -14,6 +14,7 @@
  * governing permissions and limitations under the Licence.
  */
 import SwiftUI
+import feature_presentation
 import logic_assembly
 
 @main
@@ -65,6 +66,10 @@ struct Application: App {
       .onOpenURL { url in
         if let deepLink = deepLinkController.hasDeepLink(url: url) {
           Task {
+            if deepLink.action == .iproov {
+              await IProovCallbackInbox.shared.store(deepLink.plainUrl)
+              print("[LearningLab] stored iProov callback \(deepLink.plainUrl.absoluteString)")
+            }
             deepLinkController.handleDeepLinkAction(
               routerHost: routerHost,
               deepLinkExecutable: deepLink,
