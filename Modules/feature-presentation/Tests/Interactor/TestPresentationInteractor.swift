@@ -190,6 +190,19 @@ final class TestPresentationInteractor: EudiTest {
     verify(walletKitController).stopPresentation()
   }
 
+  func testStopPresentation_WhenInteractorMethodCalled_ThenDoesNotReReadClearedCoordinator() async {
+    // Given
+    stub(walletKitController) { mock in
+      when(mock.stopPresentation()).thenDoNothing()
+    }
+
+    // When
+    await interactor.stopPresentation()
+
+    // Then
+    verify(sessionCoordinatorHolder, times(0)).getActiveRemoteCoordinator()
+  }
+
   func testStopPresentation_WhenInteractorCalled_ThenCallsWalletKitControllerStopPresentation() async {
     // Given
     stub(walletKitController) { mock in

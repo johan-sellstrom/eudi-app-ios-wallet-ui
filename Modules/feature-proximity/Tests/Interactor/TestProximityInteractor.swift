@@ -245,6 +245,19 @@ final class TestProximityInteractor: EudiTest {
     // Then
     verify(walletKitController).stopPresentation()
   }
+
+  func testStopPresentation_WhenWalletKitControllerStopsPresentation_ThenInteractorDoesNotReReadClearedCoordinator() async {
+    // Given
+    stub(walletKitController) { mock in
+      when(mock.stopPresentation()).thenDoNothing()
+    }
+
+    // When
+    await interactor.stopPresentation()
+
+    // Then
+    verify(sessionHolder, times(0)).getActiveProximityCoordinator()
+  }
   
   func testOnRequestReceived_WhenCoordinatorRequestReceivedReturnsSuccess_ThenVerifySuccessState() async {
     

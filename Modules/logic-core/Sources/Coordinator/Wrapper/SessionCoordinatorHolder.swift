@@ -30,6 +30,8 @@ final actor SessionCoordinatorHolderImpl: SessionCoordinatorHolder {
   init() {}
 
   public func clear() {
+    activeRemoteCoordinator?.stopPresentation()
+    activeProximityCoordinator?.stopPresentation()
     activeRemoteCoordinator = nil
     activeProximityCoordinator = nil
   }

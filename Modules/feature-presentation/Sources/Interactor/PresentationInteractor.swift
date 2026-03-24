@@ -155,6 +155,5 @@ final actor PresentationInteractorImpl: PresentationInteractor {
 
   public func stopPresentation() async {
     await walletKitController.stopPresentation()
-    try? await sessionCoordinatorHolder.getActiveRemoteCoordinator().stopPresentation()
   }
 }
