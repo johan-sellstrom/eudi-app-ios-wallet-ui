@@ -17,11 +17,18 @@ import Foundation
 import logic_business
 import EudiWalletKit
 import Security
-import SiopOpenID4VP
+import OpenID4VP
 
 private let workshopVerifierClientId = "verifier.ipid.me"
 private let workshopVerifierApiUri = "https://verifier.ipid.me"
 private let workshopVerifierLegalName = "iProov Verifier"
+private let workshopVerifierReaderRootBase64Der =
+  "MIIBiTCCAS+gAwIBAgIJALfDjrCHHyrzMAoGCCqGSM49BAMCMBsxGTAXBgNVBAMMEHZlcmlmaWVyLmlwaWQubWUwHhcN" +
+  "MjYwMzI0MTU1MTA5WhcNMjcwMzI0MTU1MTA5WjAbMRkwFwYDVQQDDBB2ZXJpZmllci5pcGlkLm1lMFkwEwYHKoZIzj0C" +
+  "AQYIKoZIzj0DAQcDQgAEGkifnqM6tBy1fatupTzINe6ywgILDjCtn0vqO7ICDkt5BI2Vh6r27nU9Wr0dHpF/pjRmIaRqW" +
+  "dHJxph1+EeXTaNcMFowGwYDVR0RBBQwEoIQdmVyaWZpZXIuaXBpZC5tZTAMBgNVHRMBAf8EAjAAMA4GA1UdDwEB/wQEA" +
+  "wIHgDAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwCgYIKoZIzj0EAwIDSAAwRQIgRrTaJGTk3PxICzOZ86As5" +
+  "Qrf0YVmsE1SYNNLeKyiDwgCIQDiA2P4lFAsk/ESY3rdKeiu8ePD8IluphPIYF3Fg9vOAw=="
 
 protocol WalletKitConfig: Sendable {
 
@@ -200,9 +207,13 @@ struct WalletKitConfigImpl: WalletKitConfig {
       "pidissuerca02_ut",
       "r45_staging"
     ]
-    return certificates
+    var roots = certificates
       .compactMap { loadCertificate($0) }
       .map { [$0] }
+    if let workshopVerifierRoot = loadInlineCertificate(base64Der: workshopVerifierReaderRootBase64Der) {
+      roots.append([workshopVerifierRoot])
+    }
+    return roots
   }
 
   var documentStorageServiceName: String {
@@ -312,6 +323,11 @@ struct WalletKitConfigImpl: WalletKitConfig {
 private extension WalletKitConfigImpl {
   func loadCertificate(_ name: String) -> SecCertificate? {
     guard let data = Data(name: name, ext: "der") else { return nil }
+    return SecCertificateCreateWithData(nil, data as CFData)
+  }
+
+  func loadInlineCertificate(base64Der: String) -> SecCertificate? {
+    guard let data = Data(base64Encoded: base64Der) else { return nil }
     return SecCertificateCreateWithData(nil, data as CFData)
   }
 }
