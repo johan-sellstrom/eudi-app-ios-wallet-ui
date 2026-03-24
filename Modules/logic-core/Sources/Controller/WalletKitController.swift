@@ -481,9 +481,10 @@ private extension WalletKitControllerImpl {
     let workshopRoots = rootChains.flatMap(\.self).filter(isWorkshopRoot)
     let summaries = workshopRoots.map(certificateDebugSummary).joined(separator: " | ")
     let bundleId = Bundle.main.bundleIdentifier ?? "<unknown>"
-    print(
+    let message =
       "[LearningLab] bundle=\(bundleId) trustedReaderRootCertificates chains=\(rootChains.count) workshopRoots=\(workshopRoots.count) \(summaries)"
-    )
+    print(message)
+    NSLog("%@", message)
   }
 
   static func isWorkshopRoot(_ certificate: SecCertificate) -> Bool {
