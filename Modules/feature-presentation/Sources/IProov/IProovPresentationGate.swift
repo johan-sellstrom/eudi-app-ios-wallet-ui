@@ -124,6 +124,9 @@ actor IProovPresentationGate {
     }
 
     pendingSession = response.session
+    print(
+      "[LearningLab] native iProov claim session=\(response.session) mode=\(response.mode) streamingHost=\(streamingURL.host() ?? streamingURL.absoluteString)"
+    )
 
     switch await sdkLauncher.launch(streamingURL: streamingURL, token: response.token) {
     case .passed:
@@ -165,6 +168,7 @@ actor IProovPresentationGate {
     guard let session = pendingSession else {
       throw IProovPresentationGateError(message: defaultIProovFailureMessage)
     }
+    print("[LearningLab] validating iProov session \(session)")
 
     let response: SessionStatusResponse = try await requestJSON(
       url: issuerBaseURL.appending(path: "/iproov/validate"),
@@ -174,9 +178,11 @@ actor IProovPresentationGate {
     pendingSession = nil
 
     if response.passed {
+      print("[LearningLab] iProov validation passed for session \(session)")
       return .passed
     }
 
+    print("[LearningLab] iProov validation failed for session \(session): \(response.reason ?? defaultIProovFailureMessage)")
     throw IProovPresentationGateError(message: response.reason ?? defaultIProovFailureMessage)
   }
 
@@ -389,23 +395,29 @@ struct IProovSDKLauncher: IProovSDKLaunching {
       }
 
       let session = IProov.launch(streamingURL: streamingURL, token: token) { status in
+        print("[LearningLab] native iProov status: \(String(describing: status))")
         switch status {
         case .connecting, .connected, .processing:
           return
         case .success:
+          print("[LearningLab] native iProov succeeded")
           finish(with: .passed)
         case .failure(let result):
           let message = result.reasons
             .map(\.localizedDescription)
             .joined(separator: " ")
             .trimmingCharacters(in: .whitespacesAndNewlines)
+          print("[LearningLab] native iProov failure: \(String(describing: result))")
           finish(with: .failure(message.isEmpty ? defaultIProovFailureMessage : message))
         case .canceled:
+          print("[LearningLab] native iProov canceled")
           finish(with: .canceled)
         case .error(let error):
           let message = error.localizedDescription.trimmingCharacters(in: .whitespacesAndNewlines)
+          print("[LearningLab] native iProov error: \(String(describing: error))")
           finish(with: .failure(message.isEmpty ? defaultIProovFailureMessage : message))
         @unknown default:
+          print("[LearningLab] native iProov hit unknown status")
           finish(with: .failure(defaultIProovFailureMessage))
         }
       }
