@@ -17,6 +17,7 @@ import logic_business
 import SwiftUI
 import logic_storage
 import logic_api
+import CryptoKit
 
 private enum KeyIdentifier: String, KeyChainWrapper {
   public var value: String {
@@ -113,6 +114,10 @@ final actor WalletKitControllerImpl: WalletKitController {
     self.bookmarkStorageController = bookmarkStorageController
     self.transactionLogStorageController = transactionLogStorageController
     self.revokedDocumentStorageController = revokedDocumentStorageController
+
+    #if DEBUG
+      Self.logTrustedReaderRoots(configLogic.trustedReaderRootCertificates)
+    #endif
 
     guard let walletKit = try? EudiWallet(
       eudiWalletConfig: EudiWalletConfiguration(
@@ -472,6 +477,26 @@ final actor WalletKitControllerImpl: WalletKitController {
 }
 
 private extension WalletKitControllerImpl {
+  static func logTrustedReaderRoots(_ rootChains: [x5chain]) {
+    let workshopRoots = rootChains.flatMap(\.self).filter(isWorkshopRoot)
+    let summaries = workshopRoots.map(certificateDebugSummary).joined(separator: " | ")
+    let bundleId = Bundle.main.bundleIdentifier ?? "<unknown>"
+    print(
+      "[LearningLab] bundle=\(bundleId) trustedReaderRootCertificates chains=\(rootChains.count) workshopRoots=\(workshopRoots.count) \(summaries)"
+    )
+  }
+
+  static func isWorkshopRoot(_ certificate: SecCertificate) -> Bool {
+    let subject = SecCertificateCopySubjectSummary(certificate) as String?
+    return subject == "LearningLab Workshop Root"
+  }
+
+  static func certificateDebugSummary(_ certificate: SecCertificate) -> String {
+    let data = SecCertificateCopyData(certificate) as Data
+    let fingerprint = SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+    let subject = (SecCertificateCopySubjectSummary(certificate) as String?) ?? "<unknown>"
+    return "subject=\(subject) sha256=\(fingerprint)"
+  }
 
   func decodeDeeplink(link: URLComponents) -> String? {
     link.removeSchemeFromComponents()?.string
