@@ -23,6 +23,8 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
   private var publisherTask: Task<Void, Error>?
   private var coordinator: RemoteSessionCoordinator?
   private var waitingForIProovCallback = false
+  private var isPreparingIProov = false
+  private var isSendingPresentationResponse = false
 
   init(
     router: Router,
@@ -138,6 +140,14 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
       return
     }
 
+    guard !isPreparingIProov else {
+      print("[LearningLab] skipping duplicate iProov preparation while one is already running")
+      return
+    }
+
+    isPreparingIProov = true
+    defer { isPreparingIProov = false }
+
     switch await iproovGate.prepareForPresentation() {
     case .disabled, .passed:
       await sendPresentationResponse()
@@ -189,6 +199,12 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
 
   @MainActor
   private func sendPresentationResponse() async {
+    guard !isSendingPresentationResponse else {
+      print("[LearningLab] skipping duplicate presentation response send")
+      return
+    }
+
+    isSendingPresentationResponse = true
     print("[LearningLab] sending presentation response to verifier")
     let result = await interactor.onSendResponse()
 
@@ -196,6 +212,7 @@ final class PresentationLoadingViewModel<Router: RouterHost, RequestItem: Sendab
     case .sent:
       print("[LearningLab] presentation response sent")
     case .failure(let error):
+      isSendingPresentationResponse = false
       print("[LearningLab] presentation response failed: \(error.localizedDescription)")
       self.onError(with: error)
     }

@@ -408,6 +408,7 @@ struct IProovSDKLauncher: IProovSDKLaunching {
             .joined(separator: " ")
             .trimmingCharacters(in: .whitespacesAndNewlines)
           print("[LearningLab] native iProov failure: \(String(describing: result))")
+          print("[LearningLab] native iProov failure message: \(message.isEmpty ? defaultIProovFailureMessage : message)")
           finish(with: .failure(message.isEmpty ? defaultIProovFailureMessage : message))
         case .canceled:
           print("[LearningLab] native iProov canceled")
