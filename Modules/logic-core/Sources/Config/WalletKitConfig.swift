@@ -17,6 +17,11 @@ import Foundation
 import logic_business
 import EudiWalletKit
 import Security
+import SiopOpenID4VP
+
+private let workshopVerifierClientId = "verifier.ipid.me"
+private let workshopVerifierApiUri = "https://verifier.ipid.me"
+private let workshopVerifierLegalName = "iProov Verifier"
 
 protocol WalletKitConfig: Sendable {
 
@@ -167,7 +172,21 @@ struct WalletKitConfigImpl: WalletKitConfig {
   }
 
   var vpConfig: OpenId4VpConfiguration {
-    .init(clientIdSchemes: [.x509SanDns, .x509Hash])
+    .init(
+      clientIdSchemes: [
+        .x509SanDns,
+        .x509Hash,
+        .preregistered(
+          [
+            PreregisteredClient(
+              clientId: workshopVerifierClientId,
+              verifierApiUri: workshopVerifierApiUri,
+              verifierLegalName: workshopVerifierLegalName
+            )
+          ]
+        )
+      ]
+    )
   }
 
   var trustedReaderRootCertificates: [x5chain] {
