@@ -19,10 +19,10 @@ You need [xcode](https://xcodereleases.com/) and its associated tools installed 
 
 Clone the [iOS repository](https://github.com/eu-digital-identity-wallet/eudi-app-ios-wallet-ui)
 
-Open the project file in Xcode. The application has two schemes: "EUDI Wallet Dev" and "EUDI Wallet Demo".
+Open the project file in Xcode. The application has two schemes: "iProov Wallet Dev" and "iProov Wallet Demo".
 
-- EUDI Wallet Dev: This target communicates with the services deployed in an environment based on the latest main branch.
-- EUDI Wallet Demo: This target communicates with the services deployed in the latest stable environment.
+- iProov Wallet Dev: This target communicates with the services deployed in an environment based on the latest main branch.
+- iProov Wallet Demo: This target communicates with the services deployed in the latest stable environment.
 
 
 Each scheme has two configurations: Debug and Release.

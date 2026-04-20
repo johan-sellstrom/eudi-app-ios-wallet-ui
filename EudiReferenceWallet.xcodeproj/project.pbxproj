@@ -311,7 +311,7 @@
 			packageProductDependencies = (
 				F02AE3902BA6E59600C25C59 /* logic-assembly */,
 			);
-			productName = "EUDI Reference App";
+			productName = "iProov Wallet";
 			productReference = F14907B82ABAF54B00DDFE56 /* EudiWallet.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -901,7 +901,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/Wallet.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "EUDI Wallet";
+				INFOPLIST_KEY_CFBundleDisplayName = "iProov Wallet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Share mdoc using BLE peripheral mode";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR codes in web pages";
@@ -1009,7 +1009,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/Wallet.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "EUDI Wallet";
+				INFOPLIST_KEY_CFBundleDisplayName = "iProov Wallet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Share mdoc using BLE peripheral mode";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR codes in web pages";
@@ -1181,7 +1181,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/Wallet.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "EUDI Wallet";
+				INFOPLIST_KEY_CFBundleDisplayName = "iProov Wallet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Share mdoc using BLE peripheral mode";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR codes in web pages";
@@ -1233,7 +1233,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/Wallet.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "EUDI Wallet";
+				INFOPLIST_KEY_CFBundleDisplayName = "iProov Wallet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Share mdoc using BLE peripheral mode";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scan QR codes in web pages";

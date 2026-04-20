@@ -130,7 +130,7 @@ To delete a document, navigate to the 'Documents' tab within the 'Dashboard' scr
 
 ### Proximity flow
 
-1. Log in to the EUDI Wallet app.
+1. Log in to the iProov Wallet app.
 2. You will be on the "Home" tab of the "Dashboard" screen.
 3. Tap the "Authenticate" button on the first informative card. A modal with two options will appear.
 4. Select "In person".

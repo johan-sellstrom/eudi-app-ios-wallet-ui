@@ -29,7 +29,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Select a document to add in your EUDI Wallet"
+            "value" : "Select a document to add in your iProov Wallet"
           }
         }
       }
@@ -1308,7 +1308,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My EU Wallet"
+            "value" : "iProov Wallet"
           }
         }
       }
@@ -1817,7 +1817,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The requested document is not available in your EUDI Wallet. Please contact the authorised issuer for further information."
+            "value" : "The requested document is not available in your iProov Wallet. Please contact the authorised issuer for further information."
           }
         }
       }

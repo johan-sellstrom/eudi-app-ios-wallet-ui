@@ -269,7 +269,8 @@ final class ImageManager: ImageManagerProtocol {
     Image(systemName: ImageEnum.docFill.rawValue)
   }
   var logoEuDigitalIndentityWallet: Image {
-    Image(ImageEnum.logoEuDigitalIndentityWallet.rawValue, bundle: bundle)
+    // Keep the existing API stable while reusing the generic app mark for the rebrand.
+    Image(ImageEnum.logo.rawValue, bundle: bundle)
   }
   var homeContract: Image {
     Image(ImageEnum.homeContract.rawValue, bundle: bundle)

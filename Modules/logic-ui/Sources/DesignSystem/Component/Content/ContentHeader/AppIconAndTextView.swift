@@ -18,17 +18,20 @@ import SwiftUI
 public struct AppIconAndTextData {
   public let appIcon: Image
   public let appText: Image
+  public let brandTitle: String?
   public let appIconSize: CGFloat
   public let appTextSize: CGFloat
 
   public init(
     appIcon: Image,
     appText: Image,
+    brandTitle: String? = "iProov Wallet",
     appIconSize: CGFloat = 60,
     appTextSize: CGFloat = 60
   ) {
     self.appIcon = appIcon
     self.appText = appText
+    self.brandTitle = brandTitle
     self.appIconSize = appIconSize
     self.appTextSize = appTextSize
   }
@@ -49,10 +52,18 @@ public struct AppIconAndTextView: View {
         .resizable()
         .scaledToFit()
         .frame(width: appIconAndTextData.appIconSize, height: appIconAndTextData.appIconSize)
-      appIconAndTextData.appText
-        .resizable()
-        .scaledToFit()
-        .frame(width: appIconAndTextData.appTextSize, height: appIconAndTextData.appTextSize)
+      if let brandTitle = appIconAndTextData.brandTitle {
+        Text(brandTitle)
+          .font(.system(size: appIconAndTextData.appTextSize * 0.42, weight: .semibold))
+          .foregroundStyle(.primary)
+          .lineLimit(1)
+          .minimumScaleFactor(0.7)
+      } else {
+        appIconAndTextData.appText
+          .resizable()
+          .scaledToFit()
+          .frame(width: appIconAndTextData.appTextSize, height: appIconAndTextData.appTextSize)
+      }
     }
     .frame(maxWidth: .infinity, alignment: .center)
   }

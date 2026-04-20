@@ -12,7 +12,7 @@ jobs:
       uses: eu-digital-identity-wallet/eudi-infra-ci/.github/workflows/sast_action_swift.yml@main
       with:
         app_project: "EudiReferenceWallet.xcodeproj"
-        app_scheme: "EUDI Wallet Dev"
+        app_scheme: "iProov Wallet Dev"
       secrets:
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
