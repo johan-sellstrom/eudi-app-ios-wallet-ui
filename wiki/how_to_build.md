@@ -75,7 +75,7 @@ var vciConfig: [String: OpenId4VciConfiguration] {
           credentialIssuerURL: "https://issuer.eudiw.dev",
           clientId: "wallet-dev",
           keyAttestationsConfig: .init(walletAttestationsProvider: walletKitAttestationProvider),
-          authFlowRedirectionURI: URL(string: "eu.europa.ec.euidi://authorization")!,
+          authFlowRedirectionURI: URL(string: "com.svipe.euidi://authorization")!,
           requirePAR: true,
           requireDpop: true,
           cacheIssuerMetadata: true
@@ -86,7 +86,7 @@ var vciConfig: [String: OpenId4VciConfiguration] {
           credentialIssuerURL: "https://ec.dev.issuer.eudiw.dev",
           clientId: "wallet-dev",
           keyAttestationsConfig: .init(walletAttestationsProvider: walletKitAttestationProvider),
-          authFlowRedirectionURI: URL(string: "eu.europa.ec.euidi://authorization")!,
+          authFlowRedirectionURI: URL(string: "com.svipe.euidi://authorization")!,
           requirePAR: true,
           requireDpop: true,
           cacheIssuerMetadata: true

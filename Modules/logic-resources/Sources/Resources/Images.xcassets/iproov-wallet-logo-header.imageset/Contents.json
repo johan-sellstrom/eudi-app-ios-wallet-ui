@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "iproov_wallet_logo_header_transparent.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

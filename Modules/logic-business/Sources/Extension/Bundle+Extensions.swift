@@ -57,9 +57,9 @@ public extension Bundle {
   /// access group the OS assigned. When no `kSecAttrAccessGroup` is specified, the OS places
   /// the item in the app's default keychain group, which is the first entry in the
   /// `keychain-access-groups` entitlement — already fully resolved by Xcode (e.g.
-  /// `AZXQE7588Y.eu.europa.ec.euidi.dev`). This works correctly on both simulator and device.
+  /// `AZXQE7588Y.com.svipe.euidi.dev`). This works correctly on both simulator and device.
   static func getKeychainAccessGroup() -> String {
-    let probeAccount = "eu.europa.ec.euidi.access.group.probe"
+    let probeAccount = "com.svipe.euidi.access.group.probe"
 
     let deleteQuery: [String: Any] = [
       kSecClass as String: kSecClassGenericPassword,

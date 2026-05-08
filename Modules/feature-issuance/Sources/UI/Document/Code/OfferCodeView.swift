@@ -125,8 +125,7 @@ private func content(
     caption: LocalizableStringKey.addDocumentSubtitle,
     contentHeaderConfig: .init(
       appIconAndTextData: AppIconAndTextData(
-        appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-        appText: ThemeManager.shared.image.euditext
+        headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
       )
     )
   )

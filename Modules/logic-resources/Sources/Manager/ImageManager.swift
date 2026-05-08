@@ -61,6 +61,7 @@ public protocol ImageManagerProtocol: Sendable {
   var relyingPartyVerified: Image { get }
   var docFill: Image { get }
   var logoEuDigitalIndentityWallet: Image { get }
+  var iproovWalletLogoHeader: Image { get }
   var homeContract: Image { get }
   var homeIdentity: Image { get }
   var successSecuredWallet: Image { get }
@@ -118,6 +119,7 @@ final class ImageManager: ImageManagerProtocol {
     case relyingPartyVerified = "relying-party-verified"
     case docFill = "doc.fill"
     case logoEuDigitalIndentityWallet = "logo-eu-digital-indentity-wallet"
+    case iproovWalletLogoHeader = "iproov-wallet-logo-header"
     case homeContract = "home-contract"
     case homeIdentity = "home-identity"
     case successSecuredWallet = "success-secured-wallet"
@@ -270,6 +272,9 @@ final class ImageManager: ImageManagerProtocol {
   }
   var logoEuDigitalIndentityWallet: Image {
     Image(ImageEnum.logoEuDigitalIndentityWallet.rawValue, bundle: bundle)
+  }
+  var iproovWalletLogoHeader: Image {
+    Image(ImageEnum.iproovWalletLogoHeader.rawValue, bundle: bundle)
   }
   var homeContract: Image {
     Image(ImageEnum.homeContract.rawValue, bundle: bundle)

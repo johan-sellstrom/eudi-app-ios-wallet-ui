@@ -20,6 +20,9 @@ public struct AppIconAndTextData {
   public let appText: Image
   public let appIconSize: CGFloat
   public let appTextSize: CGFloat
+  public let headerLogo: Image?
+  public let headerLogoWidth: CGFloat
+  public let headerLogoHeight: CGFloat
 
   public init(
     appIcon: Image,
@@ -31,6 +34,23 @@ public struct AppIconAndTextData {
     self.appText = appText
     self.appIconSize = appIconSize
     self.appTextSize = appTextSize
+    self.headerLogo = nil
+    self.headerLogoWidth = 0
+    self.headerLogoHeight = 0
+  }
+
+  public init(
+    headerLogo: Image,
+    headerLogoWidth: CGFloat = 213,
+    headerLogoHeight: CGFloat = 60
+  ) {
+    self.appIcon = headerLogo
+    self.appText = headerLogo
+    self.appIconSize = 0
+    self.appTextSize = 0
+    self.headerLogo = headerLogo
+    self.headerLogoWidth = headerLogoWidth
+    self.headerLogoHeight = headerLogoHeight
   }
 }
 
@@ -44,15 +64,27 @@ public struct AppIconAndTextView: View {
   }
 
   public var body: some View {
-    HStack(spacing: SPACING_SMALL) {
-      appIconAndTextData.appIcon
-        .resizable()
-        .scaledToFit()
-        .frame(width: appIconAndTextData.appIconSize, height: appIconAndTextData.appIconSize)
-      appIconAndTextData.appText
-        .resizable()
-        .scaledToFit()
-        .frame(width: appIconAndTextData.appTextSize, height: appIconAndTextData.appTextSize)
+    Group {
+      if let headerLogo = appIconAndTextData.headerLogo {
+        headerLogo
+          .resizable()
+          .scaledToFit()
+          .frame(
+            width: appIconAndTextData.headerLogoWidth,
+            height: appIconAndTextData.headerLogoHeight
+          )
+      } else {
+        HStack(spacing: SPACING_SMALL) {
+          appIconAndTextData.appIcon
+            .resizable()
+            .scaledToFit()
+            .frame(width: appIconAndTextData.appIconSize, height: appIconAndTextData.appIconSize)
+          appIconAndTextData.appText
+            .resizable()
+            .scaledToFit()
+            .frame(width: appIconAndTextData.appTextSize, height: appIconAndTextData.appTextSize)
+        }
+      }
     }
     .frame(maxWidth: .infinity, alignment: .center)
   }

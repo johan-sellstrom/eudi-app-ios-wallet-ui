@@ -58,8 +58,7 @@ open class BaseRequestViewModel<Router: RouterHost>: ViewModel<Router, RequestVi
         initialized: false,
         contentHeaderConfig: .init(
           appIconAndTextData: AppIconAndTextData(
-            appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-            appText: ThemeManager.shared.image.euditext
+            headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
           ),
           description: .dataSharingTitle
         )
@@ -253,8 +252,7 @@ open class BaseRequestViewModel<Router: RouterHost>: ViewModel<Router, RequestVi
   private func initialHeaderConfig() -> ContentHeaderConfig {
     .init(
       appIconAndTextData: AppIconAndTextData(
-        appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-        appText: ThemeManager.shared.image.euditext
+        headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
       ),
       description: .dataSharingTitle
     )

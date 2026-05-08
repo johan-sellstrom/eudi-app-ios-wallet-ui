@@ -47,8 +47,7 @@ final class RequestAuthorizationViewModel: ViewModel<RequestAuthorizationViewSta
         isLoading: true,
         contentHeaderConfig: .init(
           appIconAndTextData: AppIconAndTextData(
-            appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-            appText: ThemeManager.shared.image.euditext
+            headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
           ),
           description: .dataSharingTitle
         )
@@ -70,8 +69,7 @@ final class RequestAuthorizationViewModel: ViewModel<RequestAuthorizationViewSta
           isLoading: false,
           contentHeaderConfig: .init(
             appIconAndTextData: AppIconAndTextData(
-              appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-              appText: ThemeManager.shared.image.euditext
+              headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
             ),
             description: .dataSharingTitle,
             mainText: .dataSharingRequest,

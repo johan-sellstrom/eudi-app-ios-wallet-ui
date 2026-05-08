@@ -33,7 +33,7 @@ public protocol KeyChainController: Sendable {
 
 final class KeyChainControllerImpl: KeyChainController {
 
-  private let biometryKey = "eu.europa.ec.euidi.biometric.access"
+  private let biometryKey = "com.svipe.euidi.biometric.access"
   private let configLogic: ConfigLogic
   private let keyChain: Keychain
 

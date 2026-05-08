@@ -131,8 +131,7 @@ private func noDocumentsFound(
     initialized: true,
     contentHeaderConfig: .init(
       appIconAndTextData: AppIconAndTextData(
-        appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-        appText: ThemeManager.shared.image.euditext
+        headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
       )
     )
   )
@@ -165,8 +164,7 @@ private func noDocumentsFound(
     initialized: true,
     contentHeaderConfig: .init(
       appIconAndTextData: AppIconAndTextData(
-        appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-        appText: ThemeManager.shared.image.euditext
+        headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
       )
     )
   )

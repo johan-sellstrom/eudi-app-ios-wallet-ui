@@ -25,55 +25,57 @@ protocol SwiftDataService: Actor {
   func deleteAll<T: PersistentModel & IdentifiableObject>(of type: T.Type) throws
 }
 
-final actor SwiftDataServiceImpl: SwiftDataService {
+final actor SwiftDataServiceImpl: SwiftDataService, ModelActor {
 
-  private let container: ModelContainer
-  private let context: ModelContext
+  nonisolated let modelContainer: ModelContainer
+  nonisolated let modelExecutor: any ModelExecutor
 
   init(storageConfig: StorageConfig) {
     do {
-      self.container = try ModelContainer(
+      let container = try ModelContainer(
         for: storageConfig.schemas,
         configurations: storageConfig.modelConfiguration
       )
+      let context = ModelContext(container)
+      self.modelContainer = container
+      self.modelExecutor = DefaultSerialModelExecutor(modelContext: context)
     } catch {
       fatalError("ModelContainer init failed: \(error)")
     }
-    self.context = ModelContext(container)
   }
 
   func write<T: PersistentModel & IdentifiableObject>(_ object: T) throws {
-    context.insert(object)
-    try context.save()
+    modelContext.insert(object)
+    try modelContext.save()
   }
 
   func writeAll<T: PersistentModel & IdentifiableObject>(_ objects: [T]) throws {
-    for object in objects { context.insert(object) }
-    try context.save()
+    for object in objects { modelContext.insert(object) }
+    try modelContext.save()
   }
 
   func read<T: PersistentModel & IdentifiableObject, R>(predicate: Predicate<T>, map: (T) -> R) throws -> R? {
     var fd = FetchDescriptor<T>(predicate: predicate)
     fd.fetchLimit = 1
-    return try context.fetch(fd).first.map(map)
+    return try modelContext.fetch(fd).first.map(map)
   }
 
   func readAll<T: PersistentModel & IdentifiableObject, R>(_ type: T.Type, map: (T) -> R) throws -> [R] {
-    try context.fetch(FetchDescriptor<T>()).map(map)
+    try modelContext.fetch(FetchDescriptor<T>()).map(map)
   }
 
   func delete<T: PersistentModel & IdentifiableObject>(predicate: Predicate<T>) throws {
     var fd = FetchDescriptor<T>(predicate: predicate)
     fd.fetchLimit = 1
-    if let object = try context.fetch(fd).first {
-      context.delete(object)
-      try context.save()
+    if let object = try modelContext.fetch(fd).first {
+      modelContext.delete(object)
+      try modelContext.save()
     }
   }
 
   func deleteAll<T: PersistentModel & IdentifiableObject>(of type: T.Type) throws {
-    let results = try context.fetch(FetchDescriptor<T>())
-    for result in results { context.delete(result) }
-    if !results.isEmpty { try context.save() }
+    let results = try modelContext.fetch(FetchDescriptor<T>())
+    for result in results { modelContext.delete(result) }
+    if !results.isEmpty { try modelContext.save() }
   }
 }

@@ -53,8 +53,7 @@ open class DocumentSuccessViewModel<Router: RouterHost, RequestItem: Sendable>: 
         config: config,
         contentHeaderConfig: ContentHeaderConfig(
           appIconAndTextData: AppIconAndTextData(
-            appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-            appText: ThemeManager.shared.image.euditext
+            headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
           ),
           description: config.isIssuingDocument
           ? .issuanceSuccessHeaderDescription

@@ -636,8 +636,8 @@ In the extension target build settings (`EudiReferenceWallet.xcodeproj/project.p
 
 Current values in this repository:
 
-- Dev: `eu.europa.ec.euidi.dev`
-- Demo: `eu.europa.ec.euidi`
+- Dev: `com.svipe.euidi.dev`
+- Demo: `com.svipe.euidi`
 
 2. **Ensure extension entitlements use that value**
 
@@ -655,7 +655,7 @@ In `EudiWallet.entitlements`, the main app uses:
 <string>$(AppIdentifierPrefix)$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 ```
 
-For Dev/Demo setups in this project, `PRODUCT_BUNDLE_IDENTIFIER` of the main app maps to the same logical identifiers (`eu.europa.ec.euidi.dev` / `eu.europa.ec.euidi`), so the group stays aligned with the extension.
+For Dev/Demo setups in this project, `PRODUCT_BUNDLE_IDENTIFIER` of the main app maps to the same logical identifiers (`com.svipe.euidi.dev` / `com.svipe.euidi`), so the group stays aligned with the extension.
 
 4. **Verify extension DI initialization**
 

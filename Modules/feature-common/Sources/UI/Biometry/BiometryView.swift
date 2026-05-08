@@ -159,8 +159,7 @@ private func pinView(
     quickPinSize: 6,
     contentHeaderConfig: .init(
       appIconAndTextData: AppIconAndTextData(
-        appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-        appText: ThemeManager.shared.image.euditext
+        headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
       )
     )
   )

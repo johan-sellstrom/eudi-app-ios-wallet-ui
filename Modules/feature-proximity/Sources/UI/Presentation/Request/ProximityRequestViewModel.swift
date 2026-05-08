@@ -52,8 +52,7 @@ final class ProximityRequestViewModel<Router: RouterHost>: BaseRequestViewModel<
         $0.copy(
           contentHeaderConfig: .init(
             appIconAndTextData: AppIconAndTextData(
-              appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-              appText: ThemeManager.shared.image.euditext
+              headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
             ),
             description: .dataSharingTitle,
             mainText: getTitle(),

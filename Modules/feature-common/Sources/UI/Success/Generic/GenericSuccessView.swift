@@ -45,8 +45,7 @@ private func content(
   ContentHeaderView(
     config: ContentHeaderConfig(
       appIconAndTextData: AppIconAndTextData(
-        appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-        appText: ThemeManager.shared.image.euditext
+        headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
       )
     )
   )

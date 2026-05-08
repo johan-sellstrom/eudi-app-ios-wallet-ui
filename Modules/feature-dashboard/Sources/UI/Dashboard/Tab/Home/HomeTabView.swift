@@ -155,8 +155,7 @@ private func content(
     username: "Eudi User",
     contentHeaderConfig: .init(
       appIconAndTextData: AppIconAndTextData(
-        appIcon: ThemeManager.shared.image.logoEuDigitalIndentityWallet,
-        appText: ThemeManager.shared.image.euditext
+        headerLogo: ThemeManager.shared.image.iproovWalletLogoHeader
       )
     ),
     phase: .active,
