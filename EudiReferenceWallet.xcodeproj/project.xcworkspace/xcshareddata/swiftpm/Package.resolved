@@ -1,5 +1,5 @@
 {
-  "originHash" : "38712e307c345b4ce0ca15723e3ebb1352a04613d3588d2cfc087ef1bf3dc1c5",
+  "originHash" : "854474c2ec6eaa4f85c7bc8382b0e0552e8eec0310d7df3762bbf4a672594b67",
   "pins" : [
     {
       "identity" : "activityindicatorview",
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/av-lib-ios-w3c-dc-api.git",
       "state" : {
-        "revision" : "89019092263a3efaf678f534d3f0999b6cc40d66",
-        "version" : "0.12.1"
+        "revision" : "b896c661fa3294dd9537cd2b3ade95f5956564ff",
+        "version" : "0.15.0"
       }
     },
     {
@@ -96,8 +96,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Brightify/Cuckoo.git",
       "state" : {
-        "revision" : "856aa829a5717220326368589a3d1390e7ec1785",
-        "version" : "2.1.0"
+        "revision" : "fad35de62713feac24eb19b895705ea2fa6eb5c3",
+        "version" : "2.2.1"
       }
     },
     {
@@ -114,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/eudi-lib-ios-iso18013-data-model.git",
       "state" : {
-        "revision" : "7252e2070e608d693909ab0e9a873db7f801e61f",
-        "version" : "0.13.0"
+        "revision" : "2e13a0e52993bb5084a07129e5cdd9491949b017",
+        "version" : "0.15.0"
       }
     },
     {
@@ -123,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/eudi-lib-ios-iso18013-data-transfer.git",
       "state" : {
-        "revision" : "7b0357c62827dac6f061d9662c88e710fbf6a5c5",
-        "version" : "0.13.0"
+        "revision" : "b02c6b11ee83b53a3fa5642ff8875d9976550366",
+        "version" : "0.15.0"
       }
     },
     {
@@ -132,8 +132,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/eudi-lib-ios-iso18013-security.git",
       "state" : {
-        "revision" : "2f5a75e3fbef09b643ba5f4c638b8455f268f979",
-        "version" : "0.13.0"
+        "revision" : "54b5b3b9aefc7f6e70a2ca2a448e6095ee59a6bb",
+        "version" : "0.15.0"
       }
     },
     {
@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/eudi-lib-ios-openid4vci-swift.git",
       "state" : {
-        "revision" : "225a3ae3fec28830c49382304551af829e98e070",
-        "version" : "0.35.1"
+        "revision" : "b2e50b28733f3491c0e82067fe5b22c7e2992a10",
+        "version" : "0.38.0"
       }
     },
     {
@@ -168,8 +168,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/eudi-lib-ios-rqes-ui.git",
       "state" : {
-        "revision" : "3c23b896047884671bd39d48e135a7b02efb793b",
-        "version" : "0.4.0"
+        "revision" : "8a2503a194cc1ccb5d9e6ed35c728bd7694b80d0",
+        "version" : "0.4.1"
       }
     },
     {
@@ -177,8 +177,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/eudi-lib-ios-siop-openid4vp-swift.git",
       "state" : {
-        "revision" : "4dcafc85cca592ed066da846b1195b59214a63b8",
-        "version" : "0.32.1"
+        "revision" : "ba1c25c75301bc3cbc140a63067426954d6d873c",
+        "version" : "0.33.0"
       }
     },
     {
@@ -195,8 +195,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/eudi-lib-ios-wallet-kit.git",
       "state" : {
-        "revision" : "86769e2efae72794820d5ae4dc3ce9f33aee6b9b",
-        "version" : "0.26.0"
+        "revision" : "f5482fccfb01ef60d3ae839524aa8a8366aec887",
+        "version" : "0.29.5"
       }
     },
     {
@@ -222,8 +222,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/eudi-lib-sdjwt-swift.git",
       "state" : {
-        "revision" : "7bcae6b2ec0f8b9ce3c34a9b78a50be131419514",
-        "version" : "0.14.1"
+        "revision" : "cc37a8420ef0ebe110c45cc6214930cbd374881c",
+        "version" : "0.14.3"
       }
     },
     {
@@ -285,8 +285,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/marmelroy/PhoneNumberKit",
       "state" : {
-        "revision" : "840ca3a89ced1a190e20ac93666ff3cdb376c973",
-        "version" : "4.2.11"
+        "revision" : "2d547ffe38f61009219e34e5378d2aa4c13b6e51",
+        "version" : "4.2.12"
       }
     },
     {
@@ -357,8 +357,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser",
       "state" : {
-        "revision" : "626b5b7b2f45e1b0b1c6f4a309296d1d21d7311b",
-        "version" : "1.7.1"
+        "revision" : "c5d11a805e765f52ba34ec7284bd4fcd6ba68615",
+        "version" : "1.7.0"
       }
     },
     {
@@ -375,8 +375,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-certificates.git",
       "state" : {
-        "revision" : "5aa1c0d1bc204908df47c2075bdbb39573d05e8d",
-        "version" : "1.19.0"
+        "revision" : "bde8ca32a096825dfce37467137c903418c1893d",
+        "version" : "1.19.1"
       }
     },
     {
@@ -411,8 +411,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-syntax.git",
       "state" : {
-        "revision" : "64889f0c732f210a935a0ad7cda38f77f876262d",
-        "version" : "509.1.1"
+        "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
+        "version" : "602.0.0"
       }
     },
     {
@@ -438,8 +438,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/eu-digital-identity-wallet/SwiftCopyableMacro.git",
       "state" : {
-        "revision" : "d535b0836be52c846d87605adad1205445e4dc35",
-        "version" : "0.0.4"
+        "revision" : "ba0d1318b825b69d8c0bd5ae65746300c95aa972",
+        "version" : "0.0.5"
       }
     },
     {
@@ -490,10 +490,10 @@
     {
       "identity" : "xcodeproj",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tuist/XcodeProj.git",
+      "location" : "https://github.com/tuist/XcodeProj",
       "state" : {
-        "revision" : "b1caa062d4aaab3e3d2bed5fe0ac5f8ce9bf84f4",
-        "version" : "8.27.7"
+        "revision" : "77ee0721798186f71b7ee8f7e29be8495d28360f",
+        "version" : "9.9.0"
       }
     }
   ],
