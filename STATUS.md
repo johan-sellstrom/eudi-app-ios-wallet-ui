@@ -16,5 +16,6 @@
   - Plan: create the tracking issue, fetch upstream, merge any new upstream changes into local `main`, verify the build locally, then push the synced branch.
   - Completed: merged `upstream/main` through `761a2ada` and verified a `Release Dev` iOS archive with signing disabled.
 
-- [ ] Update Xcode marketing versions to `2026.05.3`.
+- [x] Update Xcode marketing versions to `2026.05.3`.
   - Plan: update app and ID provider extension Xcode `MARKETING_VERSION` settings, verify resolved build settings and a Release Dev archive, then push the change.
+  - Completed: app and ID provider extension Xcode `MARKETING_VERSION` settings now resolve to `2026.05.3`; Release Dev archive verification passed.
