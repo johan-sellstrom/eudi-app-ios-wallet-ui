@@ -12,5 +12,6 @@
 
 ## 2026-05-17
 
-- [ ] Sync `main` with the latest changes from `upstream/main` and verify the build.
+- [x] Sync `main` with the latest changes from `upstream/main` and verify the build.
   - Plan: create the tracking issue, fetch upstream, merge any new upstream changes into local `main`, verify the build locally, then push the synced branch.
+  - Completed: merged `upstream/main` through `761a2ada` and verified a `Release Dev` iOS archive with signing disabled.
