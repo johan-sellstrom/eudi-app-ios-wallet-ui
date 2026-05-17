@@ -20,8 +20,10 @@
   - Plan: update app and ID provider extension Xcode `MARKETING_VERSION` settings, verify resolved build settings and a Release Dev archive, then push the change.
   - Completed: app and ID provider extension Xcode `MARKETING_VERSION` settings now resolve to `2026.05.3`; Release Dev archive verification passed.
 
-- [ ] Update `main` from `upstream/main`.
+- [x] Update `main` from `upstream/main`.
   - Plan: create the tracking issue, fetch upstream, merge any new upstream changes into local `main`, verify the build locally, then push the synced branch.
+  - Completed: `main` already contained the latest `upstream/main` commits; verified a clean `Release Dev` iOS archive with signing disabled.
 
-- [ ] Resolve ExtensionKit embed validation warning.
+- [x] Resolve ExtensionKit embed validation warning.
   - Plan: align the `Embed ExtensionKit Extensions` copy phase with Xcode's ExtensionKit destination shape, verify the Release Dev archive, then push the change.
+  - Completed: changed the ExtensionKit copy phase to install under the app wrapper's `Extensions` directory; verified the warning is gone and the archived appex remains in `EudiWallet.app/Extensions`.

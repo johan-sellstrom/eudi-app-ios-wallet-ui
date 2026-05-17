@@ -59,8 +59,8 @@
 		9F8701D12F6BE5BC00A865A9 /* Embed ExtensionKit Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
-			dstSubfolderSpec = 16;
+			dstPath = Extensions;
+			dstSubfolderSpec = 1;
 			files = (
 				9F8701D02F6BE5BC00A865A9 /* EudiReferenceWalletIDProvider.appex in Embed ExtensionKit Extensions */,
 			);
