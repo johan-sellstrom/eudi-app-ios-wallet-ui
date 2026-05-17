@@ -355,7 +355,7 @@ Signing checks:
 
 ```bash
 codesign -d --entitlements :- build/EudiWalletProd.xcarchive/Products/Applications/EudiWallet.app
-codesign -d --entitlements :- build/EudiWalletProd.xcarchive/Products/Applications/EudiWallet.app/PlugIns/EudiReferenceWalletIDProvider.appex
+codesign -d --entitlements :- build/EudiWalletProd.xcarchive/Products/Applications/EudiWallet.app/Extensions/EudiReferenceWalletIDProvider.appex
 ```
 
 Archive the output as release evidence.

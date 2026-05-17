@@ -27,3 +27,9 @@
 - [x] Resolve ExtensionKit embed validation warning.
   - Plan: align the `Embed ExtensionKit Extensions` copy phase with Xcode's ExtensionKit destination shape, verify the Release Dev archive, then push the change.
   - Completed: changed the ExtensionKit copy phase to install under the app wrapper's `Extensions` directory; verified the warning is gone and the archived appex remains in `EudiWallet.app/Extensions`.
+
+## 2026-05-18
+
+- [x] Re-check ExtensionKit `PlugIns` embedding warning.
+  - Plan: verify the checked-in ExtensionKit copy phase, reproduce with a clean archive, fix any remaining path that embeds `EudiReferenceWalletIDProvider.appex` under `PlugIns`, then push the verified result.
+  - Completed: verified a clean `Release Dev` archive validates `EudiReferenceWalletIDProvider.appex` under `EudiWallet.app/Extensions` with no `PlugIns` warning; corrected stale go-live documentation that referenced `PlugIns`.
