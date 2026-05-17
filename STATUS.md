@@ -22,3 +22,6 @@
 
 - [ ] Update `main` from `upstream/main`.
   - Plan: create the tracking issue, fetch upstream, merge any new upstream changes into local `main`, verify the build locally, then push the synced branch.
+
+- [ ] Resolve ExtensionKit embed validation warning.
+  - Plan: align the `Embed ExtensionKit Extensions` copy phase with Xcode's ExtensionKit destination shape, verify the Release Dev archive, then push the change.
