@@ -33,3 +33,7 @@
 - [x] Re-check ExtensionKit `PlugIns` embedding warning.
   - Plan: verify the checked-in ExtensionKit copy phase, reproduce with a clean archive, fix any remaining path that embeds `EudiReferenceWalletIDProvider.appex` under `PlugIns`, then push the verified result.
   - Completed: verified a clean `Release Dev` archive validates `EudiReferenceWalletIDProvider.appex` under `EudiWallet.app/Extensions` with no `PlugIns` warning; corrected stale go-live documentation that referenced `PlugIns`.
+
+- [x] Verify BuildProductsPath ExtensionKit embed warning.
+  - Plan: confirm the copy phase destination, run a clean `Release Dev` archive, inspect `ValidateEmbeddedBinary`, and fix the Xcode project if the appex is still validated from `BuildProductsPath`.
+  - Completed: both fresh `/tmp` DerivedData and default DerivedData `Release Dev` archives validate the appex from `InstallationBuildProductsLocation/Applications/EudiWallet.app/Extensions`; no `BuildProductsPath` warning reproduced and no project change was needed.
